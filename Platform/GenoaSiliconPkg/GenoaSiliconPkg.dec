@@ -1,0 +1,34 @@
+## @file
+#  This package files provides definitions for GenoaSiliconPkg specific interfaces and library classes.
+#
+#  Copyright (c) 2024, American Megatrends International LLC. All rights reserved.<BR>
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+##
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = GenoaSiliconPkg
+  PACKAGE_GUID                   = ABED3844-CF72-416B-9018-B2CA34A70B13
+  PACKAGE_VERSION                = 0.1
+
+################################################################################
+#
+# Include Section - list of Include Paths that are provided by this package.
+################################################################################
+[Includes]
+  Include
+
+[LibraryClasses]
+
+[Guids]
+  gGenoaSiliconPkgTokenSpaceGuid    = {0x2622e8e2, 0xb5ec, 0x4295, {0xa4, 0xae, 0x3b, 0x57, 0x5a, 0x5c, 0x45, 0x3e}}
+  
+[Ppis]
+
+[Protocols]
+  
+
+[PcdsFixedAtBuild]
+
+  
+[PcdsDynamic,PcdsDynamicEx]

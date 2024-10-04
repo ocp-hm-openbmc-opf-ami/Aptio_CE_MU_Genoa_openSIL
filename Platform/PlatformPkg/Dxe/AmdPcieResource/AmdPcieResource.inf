@@ -1,0 +1,35 @@
+##
+#  Copyright (C) 2020-2024 Advanced Micro Devices, Inc. All rights reserved.
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010017
+  BASE_NAME                      = AmdPcieResource
+  FILE_GUID                      = AA5AC224-8221-49CC-B7B9-E78E641EEDED
+  VERSION_STRING                 = 2.0
+  MODULE_TYPE                    = DXE_DRIVER
+  ENTRY_POINT                    = AmdPcieResourceEntry
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiLib
+  PcieResourcesLib
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AgesaPkg/AgesaPublicPkg.dec
+
+
+[Sources]
+  AmdPcieResource.c
+
+[Protocols]
+  gAmdPciResourceProtocolGuid                     ## PRODUCED
+
+[Pcd]
+
+[Depex]
+  TRUE

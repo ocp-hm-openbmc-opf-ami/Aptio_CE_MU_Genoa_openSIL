@@ -1,0 +1,45 @@
+[submodule "MU_BASECORE"]
+	path = MU_BASECORE
+	url = https://github.com/microsoft/mu_basecore.git
+	branch = v2024050000.0.1
+[submodule "Common/MU_TIANO"]
+	path = Common/MU_TIANO
+	url = https://github.com/microsoft/mu_tiano_plus.git
+	branch = v2024050000.0.0
+[submodule "Common/MU"]
+	path = Common/MU
+	url = https://github.com/microsoft/mu_plus.git
+	branch = v2024050000.0.0
+[submodule "Common/intel_min_platform"]
+	path = Common/intel_min_platform
+	url = https://github.com/microsoft/mu_common_intel_min_platform.git
+	branch = v2024050000.0.0
+[submodule "Common/mu_feature_ipmi"]
+	path = Common/mu_feature_ipmi
+	url = https://github.com/microsoft/mu_feature_ipmi.git
+	branch = v3.0.6
+[submodule "Common/mu_feature_config"]
+	path = Common/mu_feature_config
+	url = https://github.com/microsoft/mu_feature_config.git
+	branch = v3.0.0
+[submodule "Common/mu_oem_sample"]
+	path = Common/mu_oem_sample
+	url = https://github.com/microsoft/mu_oem_sample.git
+	branch = v2024050000.0.0
+[submodule "Silicon/Amd/AmdOpenSilPkg/opensil-uefi-interface"]
+	path = Silicon/Amd/AmdOpenSilPkg/opensil-uefi-interface
+	url = https://github.com/openSIL/opensil-uefi-interface.git
+	branch = genoa_poc
+[submodule "Silicon/Amd/PSPBin"]
+	path = Silicon/Amd/PSPBin
+	url = https://github.com/openSIL/amd_firmwares.git
+	branch = genoa_poc
+[submodule "Platform/Amd"]
+	path = Platform/Amd
+	url = https://github.com/openSIL/EDKII-Platform.git
+	branch = genoa_poc
+[submodule "Platform/AGCL-R"]
+	path = Platform/AGCL-R
+	url = https://github.com/openSIL/AGCL-R.git
+	branch = genoa_poc
+

@@ -1,0 +1,59 @@
+<ConfigSchema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="configschema.xsd">
+	<Enums>
+		<Enum name="ENABLEDDISABLE" help="">
+			<Value name="Disabled" value="0" help="" />
+			<Value name="Enabled" value="1" help="" />
+		</Enum>
+		<Enum name="ODWDTTIMEOUTACTION" help="">
+			<Value name="No_Action" value="0" help="" />
+			<Value name="Hard_Reset" value="1" help="" />
+			<Value name="Power_Down" value="2" help="" />
+			<Value name="Power_Cycle" value="3" help="" />
+		</Enum>
+		<Enum name="POWERRESTOREPOLICY" help="">
+			<Value name="Power_Off" value="0" help="" />
+			<Value name="Last_State" value="1" help="" />
+			<Value name="Power_On" value="2" help="" />
+			<Value name="No_Change" value="3" help="" />
+		</Enum>
+		<Enum name="SERIALDEBUGMESSAGELEVEL" help="">
+			<Value name="Disable" value="0" help="" />
+			<Value name="Minimum" value="1" help="" />
+			<Value name="Normal" value="2" help="" />
+			<Value name="Maximum" value="3" help="" />
+			<Value name="Auto" value="4" help="" />
+			<Value name="Fixed_Pcd" value="5" help="" />
+		</Enum>
+		<Enum name="EXTERNALSCCCK440" help="">
+			<Value name="Scc_Off" value="0" help="" />
+			<Value name="Scc_Minus_Point_3_Percent" value="1" help="" />
+			<Value name="Scc_Minus_Point_5_Percent" value="3" help="" />
+			<Value name="Hardware" value="4" help="" />
+		</Enum>
+	</Enums>
+	<Structs>
+		<Struct name="WATCHDOG_CONFIG" help="WatchDog Configuration">
+			<Member name="OsBootWdt" type="ENABLEDDISABLE" default="Disabled" help="[Os Boot Watchdog] Enable/Disable OS Watchdog Timer." />
+			<Member name="OsBootWdtTimeout" type="uint8_t" default="15" help="[Os Boot Watchdog Timeout] OS WDT Countdown Value in minutes. (3, 30)." />
+			<Member name="OsBootWdtTimeoutAction" type="ODWDTTIMEOUTACTION" default="No_Action" help="[Os Boot Watchdog Timeout Action] Action to take when the OS WDT expires." />
+		</Struct>
+		<Struct name="FRB2_CONFIG" help="Frb2 Timer Configuration">
+			<Member name="BiosFrb2En" type="ENABLEDDISABLE" default="Enabled" help="[Bios Frb2 WatchDog] Enable/Disable BIOS FRB2 Watchdog Timer." />
+			<Member name="BiosFrb2Timeout" type="uint8_t" default="10" help="[Bios Frb2 Timeout] BIOS FRB2 Countdown value" />
+		</Struct>
+		<Struct name="PLATFORM_CONFIG" help="Platform Configuration">
+			<Member name="NvmeOpRom" type="ENABLEDDISABLE" default="Enabled" help="[Launch Nvme OPROM] M.2 Option ROM Launch" />
+			<Member name="WcsSelStatusCode" type="ENABLEDDISABLE" default="Disabled" help="[Wcs Sel Status Code] Enable/Disable SEL logging of specific status code." />
+			<Member name="EnableClockSpreadSpec" type="EXTERNALSCCCK440" default="Scc_Minus_Point_5_Percent" help="[Clock SSC Support] Enable Spread Spectrum - only affects external clock generator." />
+			<Member name="ConsoleRedirection" type="ENABLEDDISABLE" default="Enabled" help="[Console Redirection] Enable/Disable Console Redirection." />
+			<Member name="serialDebugMsgLvl" type="SERIALDEBUGMESSAGELEVEL" default="Minimum" help="[Training Messages] Disable = no messages, Minimum = critical messages, Normal = critical  informational messages, Maximum = all messages, Auto = Minimum (default) or Normal (Advanced Debug mode)." />
+			<Member name="SRIOVEnable" type="ENABLEDDISABLE" default="Enabled" help="[SR-IOV Support] Enable or disable the SR-IOV support." />
+			<Member name="PowerRestorePolicy" type="POWERRESTOREPOLICY" default="No_Change" help="[Power Restore Policy] System action to take on AC power loss." />
+		</Struct>
+	</Structs>
+	<Knobs namespace="{D7ADABDD-B9CA-4E1D-87B6-9FA985D8AC69}">
+		<Knob type="WATCHDOG_CONFIG" name="WatchDogConfig" />
+		<Knob type="FRB2_CONFIG" name="Frb2Config" />
+		<Knob type="PLATFORM_CONFIG" name="PlatformConfig" />
+	</Knobs>
+</ConfigSchema>

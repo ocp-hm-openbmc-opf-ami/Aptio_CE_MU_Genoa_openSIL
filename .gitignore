@@ -1,0 +1,11 @@
+/Build
+/Conf
+/Env
+*.pyc
+*.pdb
+*.FD
+*.tar.gz
+AMD-BIOSDBG.ini
+.vscode
+/__pycache__
+/Platform/PlatformPkg/Include/AutoGen

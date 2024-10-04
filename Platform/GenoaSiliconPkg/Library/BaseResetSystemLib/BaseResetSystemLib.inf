@@ -1,0 +1,32 @@
+#;*****************************************************************************
+#; Copyright (C) 2021-2024 Advanced Micro Devices, Inc. All rights reserved.
+#;
+#; Copyright (c) 2024, American Megatrends International LLC. All rights reserved.<BR>
+#; SPDX-License-Identifier: BSD-2-Clause-Patent
+#;******************************************************************************
+
+[Defines]
+  INF_VERSION                    = 0x00010017
+  BASE_NAME                      = BaseResetSystemLib
+  FILE_GUID                      = 41DC374B-AC8F-4647-838E-3D10DAB3857E
+  VERSION_STRING                 = 0.1
+  MODULE_TYPE                    = BASE
+  LIBRARY_CLASS                  = ResetSystemLib
+
+[LibraryClasses]
+  DebugLib
+  IoLib
+
+[Guids]
+  gEfiAmdAgesaSpecificWarmResetGuid
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AgesaPkg/AgesaPublicPkg.dec
+  AgesaModulePkg/AgesaPublicModulePkg.dec
+
+[Pcd]
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdFchFullHardReset
+
+[Sources]
+  BaseResetSystemLib.c

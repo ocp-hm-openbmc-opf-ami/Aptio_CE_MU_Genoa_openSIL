@@ -1,0 +1,37 @@
+## @file
+#  SmmRebasePei inf file 
+#
+#  Copyright (c) 2024, American Megatrends International LLC. All rights reserved.<BR>
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SmmRebasePei
+  FILE_GUID                      = F970D14C-F312-4CF6-BD5B-37DEBB0E8916
+  MODULE_TYPE                    = PEIM
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = SmmRebasePeiEntry
+
+[Sources]
+  SmmRebasePei.c
+
+[Packages]
+  MdePkg/MdePkg.dec  
+  MdeModulePkg/MdeModulePkg.dec
+  UefiCpuPkg/UefiCpuPkg.dec
+
+[LibraryClasses]
+  PeimEntryPoint
+  HobLib
+  DebugLib
+  BaseMemoryLib
+  SmmRelocationLib
+
+[Ppis]
+  gEdkiiPeiMpServices2PpiGuid
+
+[Depex]
+  gEfiPeiMemoryDiscoveredPpiGuid AND
+  gEdkiiPeiMpServices2PpiGuid
+

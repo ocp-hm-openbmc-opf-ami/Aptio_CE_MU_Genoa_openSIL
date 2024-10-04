@@ -1,0 +1,48 @@
+## @file
+#
+#  This is a sample PEIM for using the policy service.
+#
+#  Copyright (C) Microsoft Corporation. All rights reserved.
+#  Copyright (c) 2024, American Megatrends International LLC. All rights reserved.<BR>
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010017
+  BASE_NAME                      = PlatformPolicyPei
+  FILE_GUID                      = 8544E9C8-8D76-433F-9F2B-B2D511110769
+  MODULE_TYPE                    = PEIM
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = PeiPolicyEntry
+
+[Sources]
+  PlatformPolicyPei.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  PolicyServicePkg/PolicyServicePkg.dec
+  SetupDataPkg/SetupDataPkg.dec
+  OemPkg/OemPkg.dec
+  IpmiFeaturePkg/IpmiFeaturePkg.dec
+  PlatformPkg/PlatformPkg.dec
+
+[LibraryClasses]
+  PeimEntryPoint
+  BaseMemoryLib
+  PolicyLib
+
+[Pcd]
+  gSetupDataPkgTokenSpaceGuid.PcdConfigurationPolicyGuid
+
+[Ppis]
+  gPeiPolicyPpiGuid             ## CONSUMES
+
+[Guids]
+  gIpmiWatchdogPolicyGuid         # PRODUCES
+  gPlatformPowerRestorePolicyGuid # PRODUCES
+
+[Depex]
+  gPeiPolicyPpiGuid AND             # Needed to file config policy
+  gOemConfigPolicyGuid

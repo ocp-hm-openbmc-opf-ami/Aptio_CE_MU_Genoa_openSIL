@@ -1,0 +1,28 @@
+## @file
+# The Platform Specific implementation of the IPMI platform library.
+#
+# Copyright (c) Microsoft Corporation.<BR>
+# Copyright (c) 2024, American Megatrends International LLC. All rights reserved.<BR>
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = IpmiPlatformLib
+  FILE_GUID                      = 70F828F1-28F6-489B-B10E-EE9C0C1858FC
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = IpmiPlatformLib
+
+[sources]
+  IpmiPlatformLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  IpmiFeaturePkg/IpmiFeaturePkg.dec
+  AmdCommonPkg/AmdCommonPkg.dec
+  GenoaSiliconPkg/GenoaSiliconPkg.dec
+
+[LibraryClasses]
+  DebugLib
+  PciLib

@@ -1,0 +1,80 @@
+#/*****************************************************************************
+# *
+# * Copyright (C) 2020-2024 Advanced Micro Devices, Inc. All rights reserved.
+# *
+# *****************************************************************************/
+#
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = AcpiCommon
+  FILE_GUID                      = D9CD229C-F977-48AA-BFA5-3490E4242BDB
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = InstallAllAcpiTables
+
+[Sources.common]
+  AcpiCommon.c
+  AcpiCommon.h
+  CpuSsdt.c
+  PciSsdt.c
+  PciSsdt.h
+  Spmi.c
+  Ivrs.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmdCommonPkg/AmdCommonPkg.dec
+  AgesaPkg/AgesaPublicPkg.dec
+  AgesaModulePkg/AgesaPublicModulePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  MinPlatformPkg/MinPlatformPkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  BaseLib
+  DebugLib
+  BaseMemoryLib
+  MemoryAllocationLib
+  IoLib
+  PcdLib
+  AmlLib
+  PcieResourcesLib
+
+[Protocols]
+  gEfiMpServiceProtocolGuid                     ## CONSUMES
+  gEfiAcpiTableProtocolGuid                     ## CONSUMES
+  gEfiAcpiSdtProtocolGuid                       ## CONSUMES
+  gEfiPciRootBridgeIoProtocolGuid               ## CONSUMES
+  gAmdPciResourceProtocolGuid                   ## CONSUMES
+
+[Pcd]
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdAcpiCpuSsdt
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdAcpiCpuSsdtProcessorScopeName0
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdAcpiCpuSsdtProcessorScopeName1
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdAcpiCpuSsdtProcessorContainerName
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdAcpiCpuSsdtProcessorContainerInSb
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdAcpiCpuSsdtProcessorScopeInSb
+  gAmdCommonPkgTokenSpaceGuid.PcdIpmiInterfaceType              ## CONSUMES
+  gAmdCommonPkgTokenSpaceGuid.PcdIpmiKCSPort                    ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemId            ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId       ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision      ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultCreatorId        ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultCreatorRevision  ## CONSUMES
+  gMinPlatformPkgTokenSpaceGuid.PcdIoApicAddress                ## CONSUMES
+  gMinPlatformPkgTokenSpaceGuid.PcdMaxCpuSocketCount            ## CONSUMES
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdAcpiTableHeaderOemId
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdAcpiIvrsTableHeaderOemTableId
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdCfgFchIoapicId
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdCfgGnbIoapicId
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdCfgIommuSupport
+
+
+[Depex]
+  gEfiMpServiceProtocolGuid AND
+  gEfiAcpiTableProtocolGuid AND
+  gEfiPciRootBridgeIoProtocolGuid AND
+  gEfiPciEnumerationCompleteProtocolGuid
+
+[BuildOptions]
+#   MSFT:*_*_*_CC_FLAGS = /FAcs

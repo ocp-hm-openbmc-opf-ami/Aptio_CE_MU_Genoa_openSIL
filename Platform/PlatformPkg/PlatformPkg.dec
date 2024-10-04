@@ -1,0 +1,38 @@
+## @file
+#  This package files provides definitions for PlatformPkg specific interfaces and library classes.
+#
+#  Copyright (c) 2024, American Megatrends International LLC. All rights reserved.<BR>
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+##
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = PlatformPkg
+  PACKAGE_GUID                   = 307FB203-3174-44A5-A630-F8D9DB8DCB0A
+  PACKAGE_VERSION                = 1.0
+
+[Includes]
+  Include
+
+[LibraryClasses]
+
+[Guids]
+  gPlatformPkgTokenSpaceGuid = {0x37f85e02, 0x98a2, 0x4688, {0xb0, 0xd0, 0x6f, 0x1f, 0x96, 0x7b, 0x1d, 0x76}}
+
+  gSioGuid = {0x501487FB, 0xFE97, 0x4E51, {0x87, 0x7E, 0x43, 0x60, 0x93, 0x87, 0xEC, 0xA6}}  #TODO: yet to review
+
+[Protocols]
+
+[Ppis]
+
+[PcdsFixedAtBuild]
+  gEfiMdeModulePkgTokenSpaceGuid.PcdNullPointerDetectionPropertyMask|0x0|UINT8|0x30001050
+  gEfiMdeModulePkgTokenSpaceGuid.PcdCpuStackGuard|FALSE|BOOLEAN|0x30001055
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetNxForStack|FALSE|BOOLEAN|0x0001006f
+  gEfiMdeModulePkgTokenSpaceGuid.PcdDxeNxMemoryProtectionPolicy|0x0000000|UINT64|0x00001048
+  gEfiMdeModulePkgTokenSpaceGuid.PcdImageProtectionPolicy|0x00000002|UINT32|0x00001047
+  gPlatformPkgTokenSpaceGuid.PcdOnboardVideoPciVendorId|0|UINT16|0x00000013
+  gPlatformPkgTokenSpaceGuid.PcdOnboardVideoPciDeviceId|0|UINT16|0x00000014
+
+[PcdsFixedAtBuild, PcdsPatchableInModule, PcdsDynamic, PcdsDynamicEx]
+
