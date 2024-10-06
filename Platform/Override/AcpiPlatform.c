@@ -195,6 +195,10 @@ SortCpuLocalApicInTable (
   }
 
   TempCpuApicIdOrderTable = AllocateZeroPool (mNumberOfCpus * sizeof (EFI_CPU_ID_ORDER_MAP));
+  if (TempCpuApicIdOrderTable == NULL) {
+    return EFI_OUT_OF_RESOURCES;
+  }
+
   CoreThreadMask = (UINT32) ((1 << mNumOfBitShift) - 1);
 
   for (CurrProcessor = 0, Index = 0; CurrProcessor < mNumberOfCpus; CurrProcessor++, Index++) {
@@ -203,6 +207,10 @@ SortCpuLocalApicInTable (
                            CurrProcessor,
                            &ProcessorInfoBuffer
                            );
+    if (EFI_ERROR(Status)) {
+      FreePool (TempCpuApicIdOrderTable);
+      return Status;
+    }
 
     CpuIdMapPtr = (EFI_CPU_ID_ORDER_MAP *) &TempCpuApicIdOrderTable[Index];
     if ((ProcessorInfoBuffer.StatusFlag & PROCESSOR_ENABLED_BIT) != 0) {
@@ -251,6 +259,7 @@ SortCpuLocalApicInTable (
 
     if (mNumberOfCpus <= Index) {
       DEBUG ((DEBUG_ERROR, "Asserting the SortCpuLocalApicInTable Index Bufferflow\n"));
+      FreePool (TempCpuApicIdOrderTable);
       return EFI_INVALID_PARAMETER;
     }
   }
@@ -309,6 +318,8 @@ SortCpuLocalApicInTable (
   DebugDisplayReOrderTable (mCpuApicIdOrderTable);
 
   mCpuOrderSorted = TRUE;
+
+  FreePool (TempCpuApicIdOrderTable);
 
   return Status;
 }
@@ -1259,6 +1270,7 @@ InstallMcfgFromScratch (
              0
              );
   if (EFI_ERROR (Status)) {
+    FreePool (McfgTable);
     return Status;
   }
 
@@ -1287,6 +1299,8 @@ InstallMcfgFromScratch (
                          &TableHandle
                          );
 
+  FreePool (McfgTable);
+  
   return Status;
 }
 
