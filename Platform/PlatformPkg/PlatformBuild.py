@@ -353,7 +353,8 @@ class PlatformBuilder( UefiBuilder, BuildSettingsManager):
                          'PeiBoardInitPreMemLib.inf' : 'Platform/Amd/AmdBoardPkg/Library/BoardInitLib',
                          'MemoryInitPei.c' : 'Platform/Amd/AmdBoardPkg/Library/BoardInitLib',
                          'PeiBoardInitPreMemLib.c' : 'Platform/Amd/AmdBoardPkg/Library/BoardInitLib',
-                         'MpioDataInitOnyx.c' : 'Platform/AGCL-R/AgesaPkg/Addendum/Oem/Onyx/Pei'
+                         'MpioDataInitOnyx.c' : 'Platform/AGCL-R/AgesaPkg/Addendum/Oem/Onyx/Pei',
+                         'AcpiPlatform.c' : 'Platform/Amd/AmdCommonPkg/Acpi/AcpiTables'
                         }
         
         mu_specific_override_files = {
