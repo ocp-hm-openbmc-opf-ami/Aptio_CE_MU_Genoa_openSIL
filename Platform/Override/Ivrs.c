@@ -803,7 +803,7 @@ CreateIvrsEntry (
       ((IOMMU_IVRS_HEADER *) Ivrs)->IvInfo |= IVINFO_EFRSUP_MASK;
     }
     //if (PcdGetBool (PcdDmaProtection)) {
-    //  ((IOMMU_IVRS_HEADER *) Ivrs)->IvInfo |= IVINFO_DMAREMAP_MASK;
+    ((IOMMU_IVRS_HEADER *) Ivrs)->IvInfo |= IVINFO_DMAREMAP_MASK;
     //}
 
     // Address of IVHD entry
