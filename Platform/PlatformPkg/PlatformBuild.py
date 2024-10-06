@@ -362,6 +362,7 @@ class PlatformBuilder( UefiBuilder, BuildSettingsManager):
                          'PlatformInitPreMem.c' : 'Common/intel_min_platform/MinPlatformPkg/PlatformInit/PlatformInitPei',
                          'PlatformInitPreMem.inf' : 'Common/intel_min_platform/MinPlatformPkg/PlatformInit/PlatformInitPei',
                          'SecBoardInitLibNull.inf' : 'Common/intel_min_platform/MinPlatformPkg/PlatformInit/Library/SecBoardInitLibNull',
+                         'MemoryAllocationLib.c' : 'Common/MU_TIANO/EmbeddedPkg/Library/PrePiMemoryAllocationLib'
                         }
         
         src_dir = os.path.join(self.GetWorkspaceRoot(), 'Platform/Override')
