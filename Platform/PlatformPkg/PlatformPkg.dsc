@@ -5,15 +5,6 @@
 #; SPDX-License-Identifier: BSD-2-Clause-Patent
 #;******************************************************************************
 
-# *****************************************************************************
-# Defines passed into build
-# RELEASE_DATE
-# FIRMWARE_REVISION_NUM
-# FIRMWARE_VERSION_STR
-# SIL_PLATFORM_NAME
-# AMD_PROCESSOR
-# *****************************************************************************
-
 [Defines]
   PROCESSOR_NAME                 = Genoa
   PROCESSOR_PATH                 = $(PROCESSOR_NAME)OpenBoardPkg
@@ -27,7 +18,7 @@
   BUILD_TARGETS                  = DEBUG|RELEASE|NOOPT
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = $(BOARD_PKG)/PlatformPkg.fdf
-  RELEASE_DATE                   = 01/01/2024
+  RELEASE_DATE                   = 10/07/2024
   FIRMWARE_VERSION_STR           = 1.0
 
   DEFINE  PEI_ARCH               = IA32
@@ -640,10 +631,11 @@
   #
   # Firmware Revision
   #
-  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"AMD"
-  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareRevision|01
+  gSmbiosFeaturePkgTokenSpaceGuid.PcdSmbiosType0StringVendor|"American Megatrends International, LLC."
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"American Megatrends"
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareRevision|1
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString|L"01.01"
-  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareReleaseDateString|L"05/22/2024"
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareReleaseDateString|L"$(RELEASE_DATE)"
   gEfiAmdAgesaPkgTokenSpaceGuid.PcdNvdimmEnable|FALSE
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdApicMode|0x02
   gMinPlatformPkgTokenSpaceGuid.PcdPcIoApicEnable|0x0F
