@@ -357,7 +357,8 @@ class PlatformBuilder( UefiBuilder, BuildSettingsManager):
                          'AcpiPlatform.c' : 'Platform/Amd/AmdCommonPkg/Acpi/AcpiTables',
                          'PciSsdt.c' : 'Platform/Amd/AmdCommonPkg/Acpi/AcpiCommon',
                          'xPrfCcx.c' : 'Silicon/Amd/AmdOpenSilPkg/opensil-uefi-interface/OpenSIL/xPRF/CCX',
-                         'Pstates.c' : 'Silicon/Amd/AmdOpenSilPkg/opensil-uefi-interface/OpenSIL/xUSL/CommonLib'
+                         'Pstates.c' : 'Silicon/Amd/AmdOpenSilPkg/opensil-uefi-interface/OpenSIL/xUSL/CommonLib',
+                         'SecureBootDefaultKeysInit.c' : 'Platform/Amd/AmdCommonPkg/SecureBoot/SecureBootDefaultKeysInit'
                         }
         
         mu_specific_override_files = {
