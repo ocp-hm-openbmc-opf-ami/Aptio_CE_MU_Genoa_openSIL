@@ -4,7 +4,6 @@
 *.pyc
 *.pdb
 *.FD
-*.tar.gz
 AMD-BIOSDBG.ini
 .vscode
 /__pycache__
