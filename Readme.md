@@ -98,6 +98,9 @@ The followings are the submodules of this project:
 - Installed and booted to Ubuntu 22.02 using M2 NVME
 - Installed and booted to Windows Server 2022 using M2 NVME
 
+# Firmware Upgrade
+ - Host FW can be updated via BMC OOB firmware update. There is no need for external tool.
+
 # Features
 
 ## SecureBoot

@@ -89,9 +89,9 @@ GetPlatformConnectOnConInList (
   Function to Connect VGA Conout
 */
 STATIC
-VOID
+EFI_HANDLE
 ConnectConOut (
-  VOID
+  OUT EFI_DEVICE_PATH_PROTOCOL  **DevicePath
   )
 {
   EFI_STATUS                Status;
@@ -111,7 +111,7 @@ ConnectConOut (
                       &HandleBuffer
                       );
   if (EFI_ERROR (Status)) {
-    return;
+    return NULL;
   }
 
   for (Index = 0; Index < HandleCount; Index++) {
@@ -146,7 +146,7 @@ ConnectConOut (
     if (Gop) {
       // Exist Gop, exit
       FreePool (Gop);
-      return;
+      return NULL;
     }
 
     gBS->ConnectController (
@@ -156,7 +156,12 @@ ConnectConOut (
                     FALSE);
 
     Gop = EfiBootManagerGetGopDevicePath (VideoController);
+    if (Gop != NULL) {
+      *DevicePath = Gop;
+    }
   }
+
+  return VideoController;
 }
 
 /**
@@ -170,7 +175,5 @@ GetPlatformPreferredConsole (
   OUT EFI_DEVICE_PATH_PROTOCOL  **DevicePath
   )
 {
-  ConnectConOut ();
-
-  return NULL;
+  return ConnectConOut (DevicePath);
 }
